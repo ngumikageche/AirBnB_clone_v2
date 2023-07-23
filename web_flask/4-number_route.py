@@ -6,6 +6,8 @@ routes:
     /:Display 'Hello HBHB!'
     /hbnb: Displays 'HBNB'.
     /c/<text>: Displays 'C' followed by the value of <text>.
+    /python/(<text>): Displays 'Python' followed by the value of <text>.
+    /number/<n>: Displays 'n is a number' only if <n> is an integer.
 """
 from flask import Flask
 app = Flask(__name__)
@@ -31,6 +33,25 @@ def c(text):
     """
     text = text.replace("_", " ")
     return "C {}".format(text)
+
+
+@app.route("/python", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
+def python(text):
+    """Displays 'C' followed by the value of <text>.
+
+    Replaces any underscores in <text> with slashes.
+    """
+    text = text.replace("_", " ")
+    return "Python {}".format(text)
+
+
+@app.route("/number", strict_slashes=False)
+@app.route("/number/<n>", strict_slashes=False)
+def number(n):
+    """display “n is a number” only if n is an integer
+    """
+    return ("{} is a number".format(n))
 
 
 if __name__ == "__main__":
