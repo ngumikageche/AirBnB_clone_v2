@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """starts the web app
 
 the app listens on 0.0.0.0, port 5000.
